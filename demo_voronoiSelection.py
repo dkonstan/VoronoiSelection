@@ -14,9 +14,10 @@ allPoints, firstLayerIdx, secondLayerIdx = prepareVirtualPointsAboveSurface(syst
 
 # select relevant AtomGroups
 waters = system.select_atoms("resname HOH")
-protein = system.select_atoms(f"not resname HOH NA CL Na Cl Na+ Cl-")
+protein = system.select_atoms("not resname HOH NA CL Na Cl Na+ Cl-")
 
 # define starting point for VoronoiSelection (protein atoms)
+# keyword arguments only allowed for the VoronoiSelection class
 vor = VoronoiSelection(startingPointsIdx=protein.ix,
                        points=allPoints,
                        atomInfo=system.atoms,
