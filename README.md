@@ -5,6 +5,30 @@ hydration shells and how to partition the air-water interface into layers, as do
 in the paper
 
 
+Basics
+------
+
+The VoronoiSelection class allows you to find concentric regions starting from any group of points/atoms.
+To initialize an object, run
+
+```python
+vor = VoronoiSelection(startingPointsIdx=startingGroup.ix,  # indices of the starting group of points/atoms
+                       points=system.atoms.positions,  # MDAnalysis Universe atom positions or just positions
+                       atomInfo=system.atoms,  # optional, required for MDAnalysis-based work
+                       dim=system.dimensions,  # required, periodic box information
+                       rememberInner=True)  # remember neighbors already found to avoid repeated neighbors (see demo)
+```
+
+to find neighbors, run
+```python
+myNeighbors = vor.getNeighbors(neighborIdx=waters.ix,  # among which atoms/points to search for neighbors?
+                               byResidue=True) # if one atom is a neighbor, should the whole residue be? (requires atomInfo above)
+neighborsOfNeighbors = myNeighbors.getNeighbors(neighborIdx=waters.ix, byResidue=True)  # get next layer without repeats
+```
+
+Advanced example
+----------------
+
 if you need to make many starting atom group objects, recalculating the Voronoi tessellation every time is wasteful. Avoid this by grabbing the neighborList after the first getNeighbors() run and setting it in future VoronoiSelection objects using setNeighborList() as in the below example
 
 ```python
