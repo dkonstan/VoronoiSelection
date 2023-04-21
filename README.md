@@ -32,6 +32,9 @@ myNeighbors = vor.getNeighbors(neighborIdx=waters.ix,  # among which atoms/point
 neighborsOfNeighbors = myNeighbors.getNeighbors(neighborIdx=waters.ix, byResidue=True)  # get next layer without repeats
 ```
 
+Note that to use the byResidue=True option, each residue and/or water molecule and/or ion must have its own
+unique residue number in the topology. If residue numbers repeat, extra atoms will be pulled into the selection.
+
 Advanced example
 ----------------
 
