@@ -282,6 +282,14 @@ class VoronoiSelection(object):
     def getNeighborList(self):
         return self.__neighborList
 
+    def setNeighborList(self, neighborList):
+        """
+        there are times when you need to make many starting objects
+        and recalculating the tessellation every time is inefficient
+        so just set the neighbor list after the first getNeighbors() run
+        """
+        self.__neighborList = neighborList
+
     def getIdx(self):
         return self.__startingPointsIdx
 
