@@ -26,11 +26,11 @@ neighborList = vor.getNeighborList()  # grab it for later
 
 # never calculate Voronoi tessellation again, just set it
 for i in range(1, bigNumber):
-	startIdx = i * nAtomsPerGroup
-	endIdx = startIdx + nAtomsPerGroup
-	startingGroup = system.atoms[startIdx:endIdx]
+    startIdx = i * nAtomsPerGroup
+    endIdx = startIdx + nAtomsPerGroup
+    startingGroup = system.atoms[startIdx:endIdx]
 
-	vor = VoronoiSelection(startingPointsIdx=startingGroup.ix,
+    vor = VoronoiSelection(startingPointsIdx=startingGroup.ix,
                        points=system.atoms.positions,
                        atomInfo=system.atoms,
                        dim=system.dimensions,
