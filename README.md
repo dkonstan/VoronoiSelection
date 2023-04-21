@@ -35,6 +35,6 @@ for i in range(1, bigNumber):
                        atomInfo=system.atoms,
                        dim=system.dimensions,
                        rememberInner=True)
-    vor.setNeighborList(neighborList)
+    vor.setNeighborList(neighborList)  # <-----------
     hydrationShell[i] = vor.getNeighbors(neighborIdx=waters.ix, byResidue=True)
 ```
