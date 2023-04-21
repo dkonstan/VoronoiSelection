@@ -7,7 +7,7 @@ in the paper
 
 if you need to make many starting atom group objects, recalculating the Voronoi tessellation every time is wasteful. Avoid this by grabbing the neighborList after the first getNeighbors() run and setting it in future VoronoiSelection objects using setNeighborList() as in the below example
 
-```
+```python
 # say you need a bigNumber of hydration shells for different parts of the system
 # you can do the following for efficiency:
 
